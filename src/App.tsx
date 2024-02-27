@@ -79,7 +79,7 @@ const App: FC = () => {
     };
     axios
       .post(
-        `https://bubble-form-4ff64-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
+        `https://bubble-recruitment-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
         { body }
       )
       .then((res: any) => {
