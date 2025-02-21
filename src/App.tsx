@@ -1,36 +1,36 @@
-import React, { FC, useRef, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { ErrorMessage } from "@hookform/error-message";
-import { yupResolver } from "@hookform/resolvers/yup";
-import emailjs from "@emailjs/browser";
-import Form from "./models/form.model";
-import formSchema from "./schemas/FormSchema";
-import axios from "axios";
-import "./App.css";
+import React, { FC, useRef, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { ErrorMessage } from '@hookform/error-message';
+import { yupResolver } from '@hookform/resolvers/yup';
+import emailjs from '@emailjs/browser';
+import Form from './models/form.model';
+import formSchema from './schemas/FormSchema';
+import axios from 'axios';
+import './App.css';
 
 enum AreaOptions {
-  ENGINF = "Engº Informática",
-  ENGTEL = "Engº Telecomunicações e Informática",
-  INFGES = "Informárica e Gestão de Empresas",
-  GESINDUS = "Gestão e Engenharia Industrial",
-  DADOS = "Ciências de Dados",
-  ARCH = "Arquitetura",
-  OTHER = "Outro",
+  ENGINF = 'Engº Informática',
+  ENGTEL = 'Engº Telecomunicações e Informática',
+  INFGES = 'Informárica e Gestão de Empresas',
+  GESINDUS = 'Gestão e Engenharia Industrial',
+  DADOS = 'Ciências de Dados',
+  ARCH = 'Arquitetura',
+  OTHER = 'Outro',
 }
 
 enum InterestsOptions {
-  FULL = "Fullstack",
-  FRONT = "Frontend",
-  BACK = "Backend",
-  NO = "No Preference",
-  OTHER = "Outro",
+  FULL = 'Fullstack',
+  FRONT = 'Frontend',
+  BACK = 'Backend',
+  NO = 'No Preference',
+  OTHER = 'Outro',
 }
 
 enum AvailabilityOptions {
-  PARTTIME = "Part-Time Job",
-  FULLTIME = "Full-Time Job",
-  ACADEMIC = "Academic Internship",
-  SUMMER = "Summer Internship",
+  PARTTIME = 'Part-Time Job',
+  FULLTIME = 'Full-Time Job',
+  ACADEMIC = 'Academic Internship',
+  SUMMER = 'Summer Internship',
 }
 
 const App: FC = () => {
@@ -45,20 +45,20 @@ const App: FC = () => {
     setValue,
     formState: { errors },
   } = useForm<Form>({
-    mode: "onSubmit",
+    mode: 'onSubmit',
     defaultValues: {
-      email: "",
-      firstName: "",
-      lastName: "",
-      phone: "",
-      degree: "",
-      year: "",
-      area: "",
-      interests: "",
-      availableFor: "",
-      notes: "",
+      email: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      degree: '',
+      year: '',
+      area: '',
+      interests: '',
+      availableFor: '',
+      notes: '',
     },
-    criteriaMode: "all",
+    criteriaMode: 'all',
     resolver: yupResolver(formSchema),
   });
 
@@ -75,11 +75,11 @@ const App: FC = () => {
       area: data.area,
       interests: data.interests,
       availableFor: data.availableFor,
-      notes: data.notes ? data.notes : "No notes",
+      notes: data.notes ? data.notes : 'No notes',
     };
     axios
       .post(
-        `https://bubble-form-a2eb6-default-rtdb.firebaseio.com/users.json`,
+        `https://bubble-form-2025-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
         { body }
       )
       .then((res: any) => {
@@ -88,28 +88,11 @@ const App: FC = () => {
         console.log(res.data);
       });
     emailjs
-      .send(
-        "service_lr0eii8",
-        "template_i95krj5",
-        templateParams,
-        "fqflitGjfeQQqsngq"
-      )
-      .then(
-        (result) => {
-          setIsModal(true);
-          console.log(result.text);
-        },
-        (error) => {
-          console.log(error.text);
-        }
-      );
-
-    emailjs
       .sendForm(
-        "service_lr0eii8",
-        "template_i95krj5",
+        'service_aw065ej',
+        'template_i95krj5',
         formRef?.current,
-        "TFTbPxMFQKeXWAF1A"
+        'Q5AqbIP0EyRh3QeZu'
       )
       .then(
         (result) => {
@@ -122,16 +105,16 @@ const App: FC = () => {
   };
 
   const closeModal = () => {
-    setValue("email", "");
-    setValue("firstName", "");
-    setValue("lastName", "");
-    setValue("phone", "");
-    setValue("degree", "");
-    setValue("year", "");
-    setValue("area", "");
-    setValue("interests", "");
-    setValue("availableFor", "");
-    setValue("notes", "");
+    setValue('email', '');
+    setValue('firstName', '');
+    setValue('lastName', '');
+    setValue('phone', '');
+    setValue('degree', '');
+    setValue('year', '');
+    setValue('area', '');
+    setValue('interests', '');
+    setValue('availableFor', '');
+    setValue('notes', '');
     setIsModal(false);
   };
 
@@ -156,9 +139,9 @@ const App: FC = () => {
             </label>
             <input
               type="text"
-              {...register("email")}
+              {...register('email')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.email"
+                errors.firstName ? 'form-error' : 'errors.email'
               }`}
               id="user-name"
               placeholder="Email"
@@ -178,9 +161,9 @@ const App: FC = () => {
             </label>
             <input
               type="text"
-              {...register("firstName")}
+              {...register('firstName')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.firstName"
+                errors.firstName ? 'form-error' : 'errors.firstName'
               }`}
               id="user-name"
               placeholder="First Name"
@@ -200,9 +183,9 @@ const App: FC = () => {
             </label>
             <input
               type="text"
-              {...register("lastName")}
+              {...register('lastName')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.lastName"
+                errors.firstName ? 'form-error' : 'errors.lastName'
               }`}
               id="user-name"
               placeholder="Last Name"
@@ -222,9 +205,9 @@ const App: FC = () => {
             </label>
             <input
               type="text"
-              {...register("phone")}
+              {...register('phone')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.phone"
+                errors.firstName ? 'form-error' : 'errors.phone'
               }`}
               id="user-name"
               placeholder="Phone Number"
@@ -243,9 +226,9 @@ const App: FC = () => {
               Degree :
             </label>
             <select
-              {...register("degree")}
+              {...register('degree')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.degre"
+                errors.firstName ? 'form-error' : 'errors.degre'
               }`}
             >
               <option value="Degree">Degree / Bachelors</option>
@@ -265,9 +248,9 @@ const App: FC = () => {
               Year :
             </label>
             <select
-              {...register("year")}
+              {...register('year')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.year"
+                errors.firstName ? 'form-error' : 'errors.year'
               }`}
             >
               <option value="1º">1º</option>
@@ -289,9 +272,9 @@ const App: FC = () => {
               Major / Area :
             </label>
             <select
-              {...register("area")}
+              {...register('area')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.area"
+                errors.firstName ? 'form-error' : 'errors.area'
               }`}
             >
               <option value={AreaOptions.ENGINF}>{AreaOptions.ENGINF}</option>
@@ -317,9 +300,9 @@ const App: FC = () => {
               Interested in :
             </label>
             <select
-              {...register("interests")}
+              {...register('interests')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.interests"
+                errors.firstName ? 'form-error' : 'errors.interests'
               }`}
             >
               <option value={InterestsOptions.FULL}>
@@ -349,9 +332,9 @@ const App: FC = () => {
               Available For :
             </label>
             <select
-              {...register("availableFor")}
+              {...register('availableFor')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.availableFor"
+                errors.firstName ? 'form-error' : 'errors.availableFor'
               }`}
             >
               <option value={AvailabilityOptions.PARTTIME}>
@@ -381,9 +364,9 @@ const App: FC = () => {
             </label>
             <input
               type="text"
-              {...register("notes")}
+              {...register('notes')}
               className={`form-control ${
-                errors.firstName ? "form-error" : "errors.notes"
+                errors.firstName ? 'form-error' : 'errors.notes'
               }`}
               id="user-name"
               placeholder="notes"
