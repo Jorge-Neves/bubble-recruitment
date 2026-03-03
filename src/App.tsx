@@ -6,6 +6,7 @@ import emailjs from '@emailjs/browser';
 import Form from './models/form.model';
 import formSchema from './schemas/FormSchema';
 import axios from 'axios';
+import bgImage from './assets/sword-logo.webp';
 import './App.css';
 
 enum AreaOptions {
@@ -79,7 +80,7 @@ const App: FC = () => {
     };
     axios
       .post(
-        `https://bubble-form-2025-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
+        `https://bubble-form-2026-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
         { body }
       )
       .then((res: any) => {
@@ -89,7 +90,7 @@ const App: FC = () => {
       });
     emailjs
       .sendForm(
-        'service_aw065ej',
+        'service_gfxv3y9',
         'template_i95krj5',
         formRef?.current,
         'Q5AqbIP0EyRh3QeZu'
@@ -119,13 +120,9 @@ const App: FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container hero">
       <div className="image-container">
-        <img
-          src="https://bubble-go.cdn.prismic.io/bubble-go/a992a8cb-4738-4c31-84b2-a921c77ad1cc_BubbleGo_logo_white.svg?ixlib=gatsbyFP&auto=compress%2Cformat&fit=max&q=50&w=150&h=150"
-          alt="logo"
-          height="55px"
-        />
+        <img src={bgImage} alt="logo" height="55px" />
       </div>
       <div className="form-container">
         <form

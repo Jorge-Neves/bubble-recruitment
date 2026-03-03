@@ -103,9 +103,8 @@ select {
 
 input[type='submit'],
 .submit-button {
-  border-radius: 2em;
   border: none;
-  background-color: #ff00a0;
+  background-color: #ffc423;
   color: white;
   cursor: pointer;
   left: 0;
@@ -176,10 +175,9 @@ input::placeholder {
   margin: auto;
   pointer-events: auto;
   opacity: 1;
+  border: 1px solid #ffc423;
   background-color: white;
   background-clip: padding-box;
-  border: 1px solid #ff009c;
-  border-radius: 1rem;
   outline: 0;
   z-index: 11;
 }
@@ -190,7 +188,7 @@ input::placeholder {
 }
 
 .close-button {
-  color: #ff009c;
+  color: black;
   background-color: none;
   background: none;
   border: none;
