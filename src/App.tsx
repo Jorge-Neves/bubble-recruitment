@@ -391,8 +391,14 @@ const App: FC = () => {
               <div className="modal-title">
                 <p className="margin-bottom">Let's keep in touch</p>
               </div>
-              Thank you for your time!
-              <input type="submit" onClick={() => closeModal()} value="Close" />
+              <span style={{ margin: '15px' }}>Thank you for your time!</span>
+              <span>
+                <input
+                  type="submit"
+                  onClick={() => closeModal()}
+                  value="Close"
+                />
+              </span>
             </div>
           </div>
         </div>

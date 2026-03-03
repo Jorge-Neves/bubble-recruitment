@@ -207,6 +207,10 @@ input::placeholder {
   padding-bottom: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-title {
