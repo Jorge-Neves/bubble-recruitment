@@ -80,7 +80,7 @@ const App: FC = () => {
     };
     axios
       .post(
-        `https://bubble-form-2026-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
+        `https://sword-form-qa-default-rtdb.europe-west1.firebasedatabase.app/users.json`,
         { body }
       )
       .then((res: any) => {
